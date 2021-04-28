@@ -7,12 +7,12 @@ const products = [
         'dis':'This is high quality standard level shoe',
         'category':'shoe',
         'price':80,
-        'rating':4.8,
+        'rating':3.8,
         'number_reviews':12,
     },
     {
         '_id':'2',
-        'name':'Man shirt',
+        'name':'Shirt',
         'brand':'gucci',
         'image':'/images/18144566_0_casual-shirt-for-men.jpg',
         'dis':'This is high quality standard level shirt',
@@ -29,7 +29,7 @@ const products = [
         'dis':'This is high quality standard level laptop',
         'category':'Electronic',
         'price':700,
-        'rating':4.5,
+        'rating':3.5,
         'number_reviews':4,
     },
     {
@@ -40,7 +40,7 @@ const products = [
         'dis':'This is high quality standard level bag',
         'category':'bag',
         'price':20,
-        'rating':4.9,
+        'rating':2.5,
         'number_reviews':24,
     },
     {
@@ -51,7 +51,7 @@ const products = [
         'dis':'This is high quality standard level mobile',
         'category':'electronic',
         'price':400,
-        'rating':4.7,
+        'rating':5.0,
         'number_reviews':20,
     },
     {
