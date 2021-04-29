@@ -9,6 +9,7 @@ const products = [
         'price':80,
         'rating':3.8,
         'number_reviews':12,
+        'productInStock':0,
     },
     {
         '_id':'2',
@@ -20,6 +21,7 @@ const products = [
         'price':40,
         'rating':4.6,
         'number_reviews':14,
+        'productInStock':20,
     },
     {
         '_id':'3',
@@ -31,6 +33,7 @@ const products = [
         'price':700,
         'rating':3.5,
         'number_reviews':4,
+        'productInStock':20,
     },
     {
         '_id':'4',
@@ -42,6 +45,7 @@ const products = [
         'price':20,
         'rating':2.5,
         'number_reviews':24,
+        'productInStock':20,
     },
     {
         '_id':'5',
@@ -53,6 +57,7 @@ const products = [
         'price':400,
         'rating':5.0,
         'number_reviews':20,
+        'productInStock':20,
     },
     {
         '_id':'6',
@@ -64,6 +69,7 @@ const products = [
         'price':40,
         'rating':4.8,
         'number_reviews':52,
+        'productInStock':20,
     },
     {
         '_id':'7',
@@ -75,6 +81,7 @@ const products = [
         'price':50,
         'rating':5.0,
         'number_reviews':42,
+        'productInStock':20,
     },
     {
         '_id':'8',
@@ -86,6 +93,7 @@ const products = [
         'price':20,
         'rating':5.0,
         'number_reviews':56,
+        'productInStock':20,
     },
 ]
 export default products
