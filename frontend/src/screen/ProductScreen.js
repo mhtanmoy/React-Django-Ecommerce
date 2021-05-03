@@ -38,7 +38,7 @@ function ProductScreen({ match }) {
                         </ListGroup.Item>
 
                         <ListGroup.Item>
-                            Description : { product.dis}
+                            Description : { product.description}
                         </ListGroup.Item>
                     </ListGroup>
                 </Col>
@@ -55,12 +55,12 @@ function ProductScreen({ match }) {
                             <ListGroup.Item>
                                 <Row>
                                     <Col>Status: </Col>
-                                    <Col>{product.productInStock > 0 ? 'In Stock' : 'Out Of Stock'}</Col>
+                                    <Col>{product.countInstock > 0 ? 'In Stock' : 'Out Of Stock'}</Col>
                                 </Row>
                             </ListGroup.Item>
                             
                             <ListGroup.Item>
-                                <Button className='btn-block' disabled={product.productInStock===0} type='button'>Add to Cart </Button>
+                                <Button className='btn-block' disabled={product.countInstock===0} type='button'>Add to Cart </Button>
                             </ListGroup.Item>
                         </ListGroup>
                     </Card>
