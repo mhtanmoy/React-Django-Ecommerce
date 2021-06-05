@@ -1,12 +1,14 @@
 from django.urls import path
-from . import views
+from Ecommerce.views import product_views as pviews
+from Ecommerce.views import user_views as uviews
+from Ecommerce.views import order_views as oviews
  
 
 urlpatterns = [
-    path('users/login', views.MyTokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('', views.home, name="home"),
-    path('users', views.getUsers, name="users"),
-    path('users/profile', views.getUserProfile, name="user-profile"),
-    path('products/', views.Products, name="products"),
-    path('products/<str:pk>', views.getProduct),
+    path('users/login', uviews.MyTokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('users/register', uviews.registerUser, name="register"),
+    path('users', uviews.getUsers, name="users"),
+    path('users/profile', uviews.getUserProfile, name="user-profile"),
+    path('products/', pviews.Products, name="products"),
+    path('products/<str:pk>', pviews.getProduct),
 ]
