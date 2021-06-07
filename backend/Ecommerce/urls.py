@@ -9,6 +9,8 @@ urlpatterns = [
     path('users/register', uviews.registerUser, name="register"),
     path('users', uviews.getUsers, name="users"),
     path('users/profile', uviews.getUserProfile, name="user-profile"),
+    path('users/update', uviews.updateUserProfile, name="user-profile-update"),
     path('products/', pviews.Products, name="products"),
     path('products/<str:pk>', pviews.getProduct),
+    
 ]
