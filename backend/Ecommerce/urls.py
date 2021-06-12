@@ -12,5 +12,6 @@ urlpatterns = [
     path('users/update', uviews.updateUserProfile, name="user-profile-update"),
     path('products/', pviews.Products, name="products"),
     path('products/<str:pk>', pviews.getProduct),
+    path('order/add', oviews.addOrderItems, name='orders-add')
     
 ]
