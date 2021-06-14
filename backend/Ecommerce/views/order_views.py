@@ -10,7 +10,7 @@ from rest_framework import status
 
 
 @api_view(['POST'])
-@permission_classes(['IsAuthenticated'])
+@permission_classes([IsAuthenticated])
 def addOrderItems(request):
     user  = request.user
     data = request.data
@@ -30,35 +30,36 @@ def addOrderItems(request):
             totalPrice=data['totalPrice']
 
         )
+    
 
     # (2) Create shipping address
 
-    shipping = ShippingAddress.objects.create(
-        order=order,
-        address=data['shippingAddress']['address'],
-        city=data['shippingAddress']['city'],
-        postalCode=data['shippingAddress']['postalCode'],
-        country=data['shippingAddress']['country']
-    )
-    # (3) Create order items add set order to orderItem relationship
-
-    for i in orderItems:
-        product = Product.objects.get(_id=i['product'])
-
-        item = OrderItem.objects.create(
-            product=product,
+        shipping = ShippingAddress.objects.create(
             order=order,
-            name=product.name,
-            qty=i['qty'],
-            price=i['price'],
-            image=product.image.url,
+            address=data['shippingAddress']['address'],
+            city=data['shippingAddress']['city'],
+            postalCode=data['shippingAddress']['postalCode'],
+            country=data['shippingAddress']['country']
         )
-        
-    # (4) Update stock
+        # (3) Create order items add set order to orderItem relationship
 
-        product.countInstock -= item.qty
-        product.save()
+        for i in orderItems:
+            product = Product.objects.get(_id=i['product'])
 
-    serializer = OrderSerializer(order, many=False)
+            item = OrderItem.objects.create(
+                product=product,
+                order=order,
+                name=product.name,
+                qty=i['qty'],
+                price=i['price'],
+                image=product.image.url,
+            )
+            
+        # (4) Update stock
 
-    return Response(serializer.data)
+            product.countInstock -= item.qty
+            product.save()
+
+        serializer = OrderSerializer(order, many=False)
+
+        return Response(serializer.data)
