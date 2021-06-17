@@ -62,7 +62,7 @@ def addOrderItems(request):
 
         return Response(serializer.data)
 
-@api_view(['POST'])
+@api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def getOrderById(request, pk):
     user = request.user
@@ -70,7 +70,7 @@ def getOrderById(request, pk):
     order = Order.objects.get(_id=pk)
     try:
         if user.is_staff or order.user == user:
-            serializer = OrderSerializer(order, many=False)
+            serializer =OrderSerializer(order, many=False)
             return Response(serializer.data)
         else:
             return Response({'detail':'Not authorized to view this order'},
