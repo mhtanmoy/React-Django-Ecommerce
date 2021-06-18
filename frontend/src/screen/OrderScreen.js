@@ -29,7 +29,7 @@ function OrderScreen({ match }) {
         }
         
         
-    }, [order, orderId])
+    }, [dispatch, order, orderId])
 
 
     return loading ? (
