@@ -5,7 +5,9 @@ import Loader from '../components/Loader'
 import Message from '../components/Message'
 import FormContainer from '../components/FormContainer'
 import { useDispatch, useSelector } from 'react-redux'
-import { getUserDetails } from '../actions/userActions'
+import { getUserDetails, updateUser } from '../actions/userActions'
+import { USER_UPDATE_RESET } from '../constants/userConstants'
+
 
 function UserEditScreen({ history, match }) {
 
@@ -20,19 +22,32 @@ function UserEditScreen({ history, match }) {
     const userDetails = useSelector(state => state.userDetails)
     const {error, loading, user} = userDetails
 
+    const userUpdate = useSelector(state => state.userUpdate)
+    const {error:errorUpdate, loading:loadingUpdate, success:successUpdate} = userUpdate
+
+
     useEffect(() => {
-        if(!user.name || user._id !== Number(userId)){
-            dispatch(getUserDetails(userId))
+
+        if(successUpdate){
+            dispatch({ type: USER_UPDATE_RESET })
+            history.push('/admin/userlist')
+            
         }else{
-            setName(user.name)
-            setEmail(user.email)
-            setIsAdmin(user.isAdmin)
+            if(!user.name || user._id !== Number(userId)){
+                dispatch(getUserDetails(userId))
+            }else{
+                setName(user.name)
+                setEmail(user.email)
+                setIsAdmin(user.isAdmin)
+            }
         }
-    }, [dispatch, user, userId])
+
+        
+    }, [dispatch, user, userId, successUpdate, history])
 
     const submitHandler = (e) => {
         e.preventDefault()
-
+        dispatch(updateUser({_id:user._id, name, email, isAdmin}))
     }
 
     return (
@@ -43,6 +58,9 @@ function UserEditScreen({ history, match }) {
             </Link>
             <FormContainer>
             <h1>Edit User</h1>
+
+            {loadingUpdate && <Loader/>}
+            {errorUpdate && <Message variant='danger'>{errorUpdate}</Message>}
 
             {loading ? <Loader/> 
             : error ? <Message variant='danger'>{error}</Message>
