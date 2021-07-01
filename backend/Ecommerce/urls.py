@@ -19,6 +19,8 @@ urlpatterns = [
     
     path('products/', pviews.Products, name="products"),
     path('products/<str:pk>', pviews.getProduct),
+    path('products/delete/<str:pk>', pviews.deleteProduct, name="delete-products"),
+
     path('order/add', oviews.addOrderItems, name='orders-add'),
     path('order/myorders', oviews.getMyOrders, name='my-orders'),
     path('order/<str:pk>', oviews.getOrderById, name='user-order'),
