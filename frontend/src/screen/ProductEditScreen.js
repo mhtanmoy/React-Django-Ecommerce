@@ -7,6 +7,7 @@ import Message from '../components/Message'
 import FormContainer from '../components/FormContainer'
 import { listProductDetails, updateProduct } from '../actions/productActions'
 import { PRODUCT_UPDATE_RESET } from '../constants/productConstants'
+import axios from 'axios'
 
 
 function ProductEditScreen({ match, history }) {
@@ -20,6 +21,7 @@ function ProductEditScreen({ match, history }) {
     const [category, setCategory] = useState('')
     const [countInstock, setCountInstock] = useState(0)
     const [description, setDescription] = useState('')
+    const [uploading, setUploading] = useState(false)
     
 
     const dispatch = useDispatch()
@@ -45,7 +47,7 @@ function ProductEditScreen({ match, history }) {
                 setImage(product.image)
                 setBrand(product.brand)
                 setCategory(product.category)
-                setCountInstock(product.countInStock)
+                setCountInstock(product.countInstock)
                 setDescription(product.description)
 
             }
@@ -69,7 +71,31 @@ function ProductEditScreen({ match, history }) {
         }))
     }
 
-    
+    const uploadFileHandler = async (e) => {
+        const file = e.target.files[0]
+        const formData = new FormData()
+        formData.append('image', file)
+        formData.append('product_id', productId)
+        setUploading(true)
+        try{
+            const config = {
+                headers:{
+                    'Content-Type':'multipart/form-data'
+                }
+            }
+
+            const {data} = await axios.post('/api/products/upload',
+                formData,
+                config)
+
+            setImage(data)
+            setUploading(false)
+
+
+        }catch(error){
+            setUploading(false)
+        }
+    }
 
     return (
         <div>
@@ -121,7 +147,15 @@ function ProductEditScreen({ match, history }) {
                                     onChange={(e) => setImage(e.target.value)}
                                 >
                                 </Form.Control>
+                                <Form.File
+                                   id='image-file'
+                                   label='Choose FIle'
+                                   custom
+                                   onChange={uploadFileHandler} 
+                                >
 
+                                </Form.File>
+                                {uploading && <Loader/>}
 
                             </Form.Group>
 

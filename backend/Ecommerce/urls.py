@@ -13,12 +13,11 @@ urlpatterns = [
     path('users/update', uviews.updateUserProfile, name="user-profile-update"),
     path('users/<str:pk>', uviews.getUserById, name='user'),
     path('users/update/<str:pk>', uviews.updateUser, name='user-update'),
-    
     path('users/delete/<str:pk>', uviews.deleteUser, name='user-delete'),
-
-    
+ 
     path('products/', pviews.Products, name="products"),
     path('products/create', pviews.createProduct, name="product-create"),
+    path('products/upload', pviews.uploadImage, name="image-upload"),
     path('products/<str:pk>', pviews.getProduct),
     path('products/update/<str:pk>', pviews.updateProduct, name="update-products"),
     path('products/delete/<str:pk>', pviews.deleteProduct, name="delete-products"),
