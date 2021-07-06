@@ -22,8 +22,10 @@ urlpatterns = [
     path('products/update/<str:pk>', pviews.updateProduct, name="update-products"),
     path('products/delete/<str:pk>', pviews.deleteProduct, name="delete-products"),
 
+    path('order', oviews.getOrders, name='orders'),
     path('order/add', oviews.addOrderItems, name='orders-add'),
     path('order/myorders', oviews.getMyOrders, name='my-orders'),
+    path('order/<str:pk>/deliver', oviews.updateOrderToDelivered, name='order-deliver'),
     path('order/<str:pk>', oviews.getOrderById, name='user-order'),
     path('order/<str:pk>/pay', oviews.updateOrderToPaid, name='pay'),
     
