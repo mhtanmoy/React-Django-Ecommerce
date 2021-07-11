@@ -6,15 +6,17 @@ import Message from '../components/Message'
 import { useDispatch, useSelector } from 'react-redux'
 import { listProducts } from '../actions/productActions'
 
-function Homescreen() {
+function Homescreen({history}) {
 
     const dispatch = useDispatch()
     const productList = useSelector( state => state.productList )
     const { error, loading, products } = productList
 
+    let keyword = history.location.search
+    
     useEffect(() => {
-        dispatch(listProducts())
-    }, [dispatch])
+        dispatch(listProducts(keyword))
+    }, [dispatch, keyword])
 
     return (
         <div>
