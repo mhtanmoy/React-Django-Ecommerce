@@ -19,6 +19,7 @@ urlpatterns = [
     path('products/create', pviews.createProduct, name="product-create"),
     path('products/upload', pviews.uploadImage, name="image-upload"),
     path('products/<str:pk>/reviews', pviews.createProductReview),
+    path('products/top', pviews.getTopProducts),
     path('products/<str:pk>', pviews.getProduct),
     path('products/update/<str:pk>', pviews.updateProduct, name="update-products"),
     path('products/delete/<str:pk>', pviews.deleteProduct, name="delete-products"),
