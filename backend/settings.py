@@ -23,7 +23,7 @@ import os
 SECRET_KEY = 'django-insecure-(##xi5gsgaq&6y_gk2@*u91nbyk%@$bu6@q(-h2#^4ew13uh4r'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['ecommerce4422.herokuapp.com', '127.0.0.1']
 
@@ -180,10 +180,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 STATICFILES_DIRS=[
-    BASE_DIR/ 'static',
     BASE_DIR / 'frontend/build/static'
 ]
 
-MEDIA_ROOT='static/images'
+MEDIA_ROOT='staticfiles/images'
 
 MEDIA_URL = '/images/'
