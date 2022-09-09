@@ -193,11 +193,18 @@ function OrderScreen({ match, history }) {
                                        {!SdkReady ? (
                                            <Loader/>
                                        ) : (
+                                        <>
                                             <PayPalButton
                                                 amount={order.totalPrice}
                                                 onSuccess={successPaymentHandler}
                                             />
+                                            <Button>
+                                                <img src='bkash.png' width={280}>
+                                                </img>
+                                            </Button>
+                                            </>
                                        )}
+                                       
                                     </ListGroup.Item>
                                 )}
 

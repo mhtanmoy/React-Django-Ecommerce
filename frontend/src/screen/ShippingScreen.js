@@ -28,11 +28,11 @@ function ShippingScreen({ history }) {
             <CheckoutSteps step1 step2/>
             <h1>Shipping</h1>
             <Form onSubmit={submitHandler}>
-
-            <Form.Group controlId='country'>
-                    <Form.Label>Division</Form.Label>
+            <div className='mb-2'>Division</div>
+            <Form.Group controlId='country' >
+                    <Form.Label></Form.Label>
                    
-            <select value={country} onChange={(e) => setCountry(e.target.value)}>
+            <select defaultValue={'Dhaka'} onChange={(e) => setCountry(e.target.value)} className='division-selectcss'>
               <option value='Barisal'>Barisal</option>
               <option value='Chittagong'>Chittagong</option>
               <option value='Dhaka'>Dhaka</option>
