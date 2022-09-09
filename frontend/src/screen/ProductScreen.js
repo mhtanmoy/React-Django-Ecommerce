@@ -72,7 +72,7 @@ function ProductScreen({ match, history }) {
                         </ListGroup.Item>
                         
                         <ListGroup.Item>
-                            price : ${product.price}
+                            price : ৳{product.price}
                         </ListGroup.Item>
 
                         <ListGroup.Item>
@@ -86,7 +86,7 @@ function ProductScreen({ match, history }) {
                             <ListGroup.Item>
                             <Row>
                                 <Col>Price : </Col>
-                                <Col><strong>${ product.price }</strong></Col>
+                                <Col><strong>৳{ product.price }</strong></Col>
                             </Row>
                             </ListGroup.Item>
 
