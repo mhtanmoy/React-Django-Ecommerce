@@ -143,7 +143,7 @@ function ProfileScreen({ history }) {
                         <tr>
                             <th>ID</th>
                             <th>Date</th>
-                            <th>TotalL</th>
+                            <th>Total</th>
                             <th>Paid</th>
                             <th>Delivered</th>
                             <th></th>

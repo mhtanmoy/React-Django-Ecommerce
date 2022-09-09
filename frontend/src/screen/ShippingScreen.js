@@ -12,8 +12,8 @@ function ShippingScreen({ history }) {
     const dispatch = useDispatch()
     const [address, setAddress] = useState(shippingAddress.address)
     const [city, setCity] = useState(shippingAddress.city)
-    const [postalCode, setPostalCode] = useState(shippingAddress.postalCode)
-    const [country, setCountry] = useState(shippingAddress.country)
+    const [postalCode, setPostalCode] = useState(shippingAddress.postalCode) //house no
+    const [country, setCountry] = useState(shippingAddress.country) //division
 
     const submitHandler = (e) => {
         e.preventDefault()
@@ -21,23 +21,28 @@ function ShippingScreen({ history }) {
         history.push('/payment')
     }
 
+    console.log(country)
+
     return (
         <FormContainer>
             <CheckoutSteps step1 step2/>
             <h1>Shipping</h1>
             <Form onSubmit={submitHandler}>
 
-            <Form.Group controlId='address'>
-                    <Form.Label>Address</Form.Label>
-                    <Form.Control
-                        required
-                        type='text'
-                        placeholder='Enter Address'
-                        value={address ? address : ''}
-                        onChange={(e) => setAddress(e.target.value)}
-                    >
-                    </Form.Control>
-
+            <Form.Group controlId='country'>
+                    <Form.Label>Division</Form.Label>
+                   
+            <select value={country} onChange={(e) => setCountry(e.target.value)}>
+              <option value='Barisal'>Barisal</option>
+              <option value='Chittagong'>Chittagong</option>
+              <option value='Dhaka'>Dhaka</option>
+              <option value='Khulna'>Khulna</option>
+              <option value='Mymensingh'>Mymensingh</option>
+              <option value='Rajshahi'>Rajshahi</option>
+              <option value='Rangpur'>Rangpur</option>
+              <option value='Sylhet'>Sylhet</option>
+            </select>
+          
             </Form.Group>
 
             <Form.Group controlId='city'>
@@ -53,27 +58,28 @@ function ShippingScreen({ history }) {
 
             </Form.Group>
 
-            <Form.Group controlId='postalCode'>
-                    <Form.Label>Postal Code</Form.Label>
+            <Form.Group controlId='address'>
+                    <Form.Label>Address</Form.Label>
                     <Form.Control
                         required
                         type='text'
-                        placeholder='Enter Postal Code'
-                        value={postalCode ? postalCode : ''}
-                        onChange={(e) => setPostalCode(e.target.value)}
+                        placeholder='Enter Address'
+                        value={address ? address : ''}
+                        onChange={(e) => setAddress(e.target.value)}
                     >
                     </Form.Control>
 
             </Form.Group>
 
-            <Form.Group controlId='country'>
-                    <Form.Label>Country</Form.Label>
+
+            <Form.Group controlId='postalCode'>
+                    <Form.Label>House No.</Form.Label>
                     <Form.Control
                         required
                         type='text'
-                        placeholder='Enter Country'
-                        value={country ? country : ''}
-                        onChange={(e) => setCountry(e.target.value)}
+                        placeholder='Enter your house no.'
+                        value={postalCode ? postalCode : ''}
+                        onChange={(e) => setPostalCode(e.target.value)}
                     >
                     </Form.Control>
 
