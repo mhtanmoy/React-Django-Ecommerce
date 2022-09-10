@@ -43,7 +43,19 @@ function PaymentScreen({ history }) {
                 >
 
                 </Form.Check>
+
+                <Form.Check
+                    type='radio'
+                    label='Mobile Banking'
+                    id='paypal'
+                    name='paymentMethod'
+                    value="Bkash"
+                    onChange= {(e) => setPaymentMethod(e.target.value)}
+                >
+
+                </Form.Check>
                 </Col>
+
 
 
             </Form.Group>
