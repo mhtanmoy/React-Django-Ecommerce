@@ -13,7 +13,7 @@ function ShippingScreen({ history }) {
     const [address, setAddress] = useState(shippingAddress.address)
     const [city, setCity] = useState(shippingAddress.city)
     const [postalCode, setPostalCode] = useState(shippingAddress.postalCode) //house no
-    const [country, setCountry] = useState(shippingAddress.country) //division
+    const [country, setCountry] = useState("Dhaka") //division
 
     const submitHandler = (e) => {
         e.preventDefault()

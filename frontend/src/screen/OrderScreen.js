@@ -199,7 +199,7 @@ function OrderScreen({ match, history }) {
                                                 onSuccess={successPaymentHandler}
                                             />
                                             <Button>
-                                                <img src='bkash.png' width={280}>
+                                                <img src='/images/bkash.png' className='bkashimg'>
                                                 </img>
                                             </Button>
                                             </>

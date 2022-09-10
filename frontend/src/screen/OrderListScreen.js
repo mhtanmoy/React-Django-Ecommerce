@@ -17,14 +17,22 @@ function OrderListScreen({ history }) {
     const orderList = useSelector(state => state.orderList)
     const { loading, error, orders } = orderList
 
-    const [todaysOrders, setTodaysOrders] = useState([])
+    const [todaysOrdersnumber, setTodaysOrdersnumber] = useState(1);
     const userLogin = useSelector(state => state.userLogin)
     const { userInfo } = userLogin
     
+    const todayordershandler = () => {
+        setTodaysOrdersnumber(todaysOrdersnumber + 1);
+    }
 
     useEffect(() => {
         if (userInfo && userInfo.isAdmin) {
             dispatch(listOrders());
+            for(let i = 0; i < orders.length; i++){
+                if(orders[i].createdAt.substring(0, 10) === date){
+                    todayordershandler();
+                }
+            }
         } else {
             history.push('/login')
         }
@@ -35,7 +43,7 @@ function OrderListScreen({ history }) {
     return (
         <div>
             <h1>Orders</h1>
-            <h2>Todays Order</h2>
+            <h2>Todays Order {todaysOrdersnumber>1 && todaysOrdersnumber}</h2>
             
             {loading
                 ? <Loader />
